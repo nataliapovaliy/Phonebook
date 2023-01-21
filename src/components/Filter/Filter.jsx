@@ -4,7 +4,7 @@ import css from '../Filter/Filter.module.css';
 export function Filter ({ value, changeFilter }) {
     return (
         <>
-            <div>
+            <div className={css.filter}>
                 <label className={css.label}>
                     Find contacts by name
                     <input

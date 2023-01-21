@@ -4,8 +4,8 @@ import css from '../ContactForm/ContactForm.module.css';
 
 export class ContactForm extends Component {
     state = {
-    name: '',
-    number: '',
+        name: '',
+        number: '',
     };
     
     handleChange = (event) => {

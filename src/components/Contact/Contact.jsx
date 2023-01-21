@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import css from '../Contact/Contact.module.css';
 
 export function Contact ({ name, number, id, deleteContact }) {
     return (
-            <div>
-                <p>{name}:{number}</p>
-                <button type="button" onClick={deleteContact(id)}>Delete</button>
+            <div className={css.contact}>
+                <p>{name}: {number}</p>
+                <button className={css.btn} type="button" onClick={() => deleteContact(id)}>Delete</button>
             </div>
     )
 }
