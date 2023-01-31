@@ -34,7 +34,7 @@ const App = () => {
     if (dublicate) { return alert(`${data.name} is already in contacts`); }
     data.id = nanoid();
 
-    setContacts([...contacts, data]);
+    setContacts(prev => [...prev, data]);
   }
 
     const changeFilter = event => {
@@ -42,7 +42,9 @@ const App = () => {
     }
 
     const deleteContact = (id) => {
-      setContacts(contacts.filter(contact => contact.id !== id));
+      setContacts(prev => {
+        prev.filter(contact => contact.id !== id);
+      })
     }
 
     const checkContact = () => {
