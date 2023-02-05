@@ -3,6 +3,7 @@ import ContactForm from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import css from './App.module.css';
+import { useSelector } from 'react-redux';
 // import { useState, useEffect } from "react";
 
 const CONTACTS_KEY = 'contacts';
@@ -17,6 +18,9 @@ const App = () => {
   //     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   //   ]
   // )
+
+  const contacts = useSelector(state => state.contacts.contacts);
+  const filter = useSelector(state => state.filter.filter);
 
   // useEffect(() => {
   //   const localData = localStorage.getItem(CONTACTS_KEY);
