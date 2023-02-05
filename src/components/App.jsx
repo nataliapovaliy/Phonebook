@@ -4,7 +4,7 @@ import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import css from './App.module.css';
 import { useSelector } from 'react-redux';
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const CONTACTS_KEY = 'contacts';
 
@@ -22,16 +22,16 @@ const App = () => {
   const contacts = useSelector(state => state.contacts.contacts);
   const filter = useSelector(state => state.filter.filter);
 
-  // useEffect(() => {
-  //   const localData = localStorage.getItem(CONTACTS_KEY);
-  //   if (localData) {
-  //     setContacts(JSON.parse(localData));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const localData = localStorage.getItem(CONTACTS_KEY);
+    if (localData) {
+      setContacts(JSON.parse(localData));
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem(CONTACTS_KEY, JSON.stringify(contacts));
-  // }, [contacts]);
+  useEffect(() => {
+    localStorage.setItem(CONTACTS_KEY, JSON.stringify(contacts));
+  }, [contacts]);
 
   const addContact = (data) => {
     const dublicate = contacts.find(contact => contact.name.toLowerCase() === data.name.toLowerCase());
