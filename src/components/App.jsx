@@ -4,63 +4,32 @@ import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import css from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react";
 import { createContacts, delContact, filterSlice } from '../redux/slice';
 
-const CONTACTS_KEY = 'contacts';
-
 const App = () => {
-  // const [filter, setFilter] = useState('');
-  // const [contacts, setContacts] = useState(
-  //   [
-  //     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  //     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  //     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  //     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  //   ]
-  // )
-
   const dispatch = useDispatch()
-  const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state.filter.filter);
-
-  useEffect(() => {
-    const localData = localStorage.getItem(CONTACTS_KEY);
-    if (localData) {
-      setContacts(JSON.parse(localData));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem(CONTACTS_KEY, JSON.stringify(contacts));
-  }, [contacts]);
+  const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
 
   const addContact = (data) => {
     const dublicate = contacts.find(contact => contact.name.toLowerCase() === data.name.toLowerCase());
     if (dublicate) { return alert(`${data.name} is already in contacts`); }
     data.id = nanoid();
 
-    setContacts(prev => [...prev, data]);
+    dispatch(createContacts(data))
   }
 
-    // const changeFilter = event => {
-    //   setFilter(event.currentTarget.value);
-    // }
   const changeFilter = event => {
-    dispatch(filterSlice(event))
+    dispatch(filterSlice(event.target.value))
   }
   
-    // const deleteContact = (id) => {
-    //   setContacts(prev => {
-    //     prev.filter(contact => contact.id !== id);
-    //   })
-    // }
   const deleteContact = (id) => {
     dispatch(delContact(id));
   }
   
-    const checkContact = () => {
-      const checkFilter = filter.toLowerCase();
+  const checkContact = () => {
+    if (!filter) return contacts;
+      const checkFilter = filter?.toLowerCase();
       return contacts.filter(contact => contact.name.toLowerCase().includes(checkFilter));
     }
 

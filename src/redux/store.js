@@ -2,21 +2,32 @@ import { configureStore } from "@reduxjs/toolkit"
 import {
 	persistStore,
 	persistReducer,
-	
+	FLUSH,
+	REHYDRATE,
+	PAUSE,
+	PERSIST,
+	PURGE,
+	REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
-import { rootReducer } from './reducer'
+import  rootReducer  from '../redux/slice'
 
 const persisConfig = {
     key: 'main',
     storage,
+    blacklist: ['filter'],
 }
 
 const persistedReducer = persistReducer(persisConfig, rootReducer)
 
 export const store = configureStore({
     reducer: persistedReducer,
-
+    middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			},
+		})
 })
 
 export const persistor = persistStore(store);
