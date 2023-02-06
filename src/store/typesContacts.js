@@ -1,1 +1,0 @@
-export const NEW_CONTACT = 'NEW_CONTACT'
