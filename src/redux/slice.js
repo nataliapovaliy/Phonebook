@@ -1,4 +1,4 @@
-import { fetchContacts, delContact } from "./operationsContacts";
+import { fetchContacts, fetchDelContact } from "./operationsContacts";
 
 const { createSlice } = require("@reduxjs/toolkit");
 const { initialStateContacts } = require("./initialStateContacts");
@@ -20,13 +20,15 @@ const slice = createSlice({
             .addCase(fetchContacts.rejected, (state, { payload }) => {
                 state.error = payload;
             })
-            .addCase(delContact.pending, state => {
+            .addCase(fetchDelContact.pending, state => {
                 state.isLoading = true;
             })
-            .addCase(delContact.fulfilled, (state, { payload }) => {
+            .addCase(fetchDelContact.fulfilled, (state, { payload }) => {
                 state.contacts = state.contacts.filter((contact => contact.id !== state.payload))
             })
-        
+            .addCase(fetchDelContact.rejected, (state, { payload }) => {
+                state.error = payload;
+            })
     }
 
     // reducers: {

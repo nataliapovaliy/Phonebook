@@ -1,10 +1,11 @@
 import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+// import { Filter } from './Filter/Filter';
 import css from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { createContacts, delContact, filterSlice } from '../redux/slice';
+// import { createContacts, delContact, filterSlice } from '../redux/slice';
+import { fetchDelContact } from '../redux/operationsContacts';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -16,15 +17,15 @@ const App = () => {
     if (dublicate) { return alert(`${data.name} is already in contacts`); }
     data.id = nanoid();
 
-    dispatch(createContacts(data))
+    // dispatch(createContacts(data))
   }
 
-  const changeFilter = event => {
-    dispatch(filterSlice(event.target.value))
-  }
+  // const changeFilter = event => {
+  //   dispatch(filterSlice(event.target.value))
+  // }
   
   const deleteContact = (id) => {
-    dispatch(delContact(id));
+    dispatch(fetchDelContact(fetchDelContact(id)));
   }
   
   const checkContact = () => {
@@ -42,9 +43,9 @@ const App = () => {
 
         <h2 className={css.title}>Contacts</h2>
 
-        <Filter
+        {/* <Filter
           value={filter}
-          changeFilter={changeFilter} />
+          changeFilter={changeFilter} /> */}
 
         <ContactList
           contacts={checkContact()}
