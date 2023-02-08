@@ -37,7 +37,7 @@ const slice = createSlice({
                 state.isLoading = true;
             })
             .addCase(delContact.fulfilled, (state, { payload }) => {
-                state.contacts = state.contacts.filter((contact => contact.id !== payload))
+                state.items = state.items.filter((contact => contact.id !== payload))
             })
             .addCase(delContact.rejected, (state, { payload }) => {
                 state.error = payload;

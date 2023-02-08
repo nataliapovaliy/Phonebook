@@ -5,12 +5,12 @@ import { delContact } from '../../redux/operationsContacts';
 
 export function Contact({ name, number, id }) {
     const dispatch = useDispatch();
-    const deleteContact = dispatch(delContact());
+    // const deleteContact = delContact();
 
     return (
             <div className={css.contact}>
                 <p>{name}: {number}</p>
-                <button className={css.btn} type="button" onClick={() => deleteContact({id})}>Delete</button>
+                <button className={css.btn} type="button" onClick={() => dispatch(delContact(id))}>Delete</button>
             </div>
     )
 }
