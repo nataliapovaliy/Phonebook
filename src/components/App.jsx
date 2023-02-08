@@ -1,55 +1,29 @@
-import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
-// import { Filter } from './Filter/Filter';
+import { Filter } from './Filter/Filter';
 import css from './App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-// import { createContacts, delContact, filterSlice } from '../redux/slice';
-import { fetchDelContact } from '../redux/operationsContacts';
+import { useSelector } from 'react-redux';
+import { selectIsLoading, selectError } from '../redux/selectorContacts';
+
 
 const App = () => {
-  const dispatch = useDispatch()
-  const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter);
 
-  const addContact = (data) => {
-    const dublicate = contacts.find(contact => contact.name.toLowerCase() === data.name.toLowerCase());
-    if (dublicate) { return alert(`${data.name} is already in contacts`); }
-    data.id = nanoid();
-
-    // dispatch(createContacts(data))
-  }
-
-  // const changeFilter = event => {
-  //   dispatch(filterSlice(event.target.value))
-  // }
-  
-  const deleteContact = (id) => {
-    dispatch(fetchDelContact(fetchDelContact(id)));
-  }
-  
-  const checkContact = () => {
-    if (!filter) return contacts;
-      const checkFilter = filter?.toLowerCase();
-      return contacts.filter(contact => contact.name.toLowerCase().includes(checkFilter));
-    }
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
     return (
       <div className={css.phonebook}>
         <h1 className={css.title}>Phonebook</h1>
 
-        <ContactForm
-          addContact={addContact} />
+        <ContactForm />
 
         <h2 className={css.title}>Contacts</h2>
 
-        {/* <Filter
-          value={filter}
-          changeFilter={changeFilter} /> */}
+        <Filter />
 
-        <ContactList
-          contacts={checkContact()}
-          deleteContact={deleteContact} />
+        {isLoading && <p>Loading contacts...</p>}
+        {error && <p>{error}</p>}
+        <ContactList />
       </div>
     )
 }

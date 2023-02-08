@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
 import css from '../ContactForm/ContactForm.module.css';
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/operationsContacts';
 
 const ContactForm = (props) => {
+    const dispatch = useDispatch();
+
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     
@@ -14,9 +18,9 @@ const ContactForm = (props) => {
 
     const handleInput = (event) => {
         event.preventDefault();
-        props.addContact({
+        dispatch(addContact({
             name,
-            number,});
+            number,}));
         reset();
     }
 

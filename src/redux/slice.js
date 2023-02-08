@@ -1,4 +1,4 @@
-import { fetchContacts, fetchDelContact } from "./operationsContacts";
+import { fetchContacts, addContact, delContact } from "./operationsContacts";
 
 const { createSlice } = require("@reduxjs/toolkit");
 const { initialStateContacts } = require("./initialStateContacts");
@@ -15,18 +15,31 @@ const slice = createSlice({
             .addCase(fetchContacts.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 state.error = null;
-                state.items = [...payload];
+                state.items = payload;
             })
             .addCase(fetchContacts.rejected, (state, { payload }) => {
                 state.error = payload;
             })
-            .addCase(fetchDelContact.pending, state => {
+
+            .addCase(addContact.pending, state => {
                 state.isLoading = true;
             })
-            .addCase(fetchDelContact.fulfilled, (state, { payload }) => {
-                state.contacts = state.contacts.filter((contact => contact.id !== state.payload))
+            .addCase(addContact.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.error = null;
+                state.items = [...payload, ...state];
             })
-            .addCase(fetchDelContact.rejected, (state, { payload }) => {
+            .addCase(addContact.rejected, (state, { payload }) => {
+                state.error = payload;
+            })
+
+            .addCase(delContact.pending, state => {
+                state.isLoading = true;
+            })
+            .addCase(delContact.fulfilled, (state, { payload }) => {
+                state.contacts = state.contacts.filter((contact => contact.id !== payload))
+            })
+            .addCase(delContact.rejected, (state, { payload }) => {
                 state.error = payload;
             })
     }
@@ -46,4 +59,4 @@ const slice = createSlice({
 
 // export const { createContacts, delContact, filterSlice } = slice.actions
 
-export default slice.reducer
+export const reducerContacts = slice.reducer;
