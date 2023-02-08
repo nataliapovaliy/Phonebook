@@ -3,13 +3,11 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Contact } from '../Contact/Contact';
 import css from '../ContactList/ContactList.module.css';
-// import { selectItems } from '../../redux/selectorContacts';
 import { fetchContacts } from '../../redux/operationsContacts';
 
 
 export function ContactList({contacts}) {
     const dispatch = useDispatch();
-    // const contacts  = useSelector(selectItems);
 
 useEffect (() => {
     dispatch(fetchContacts());
