@@ -6,9 +6,10 @@ const sliceFilter = createSlice({
 
     reducers: {
         filterSlice(state, action){
-            state = action.payload
+            return action.payload
         },
     }
 })
 
-export const reducerFilter = sliceFilter.reducer;
+export const { filterSlice } = sliceFilter.actions;       // для передачи экшена
+export const reducerFilter = sliceFilter.reducer;        // для stor
