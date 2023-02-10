@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Contact } from '../Contact/Contact';
 import css from '../ContactList/ContactList.module.css';
-import { fetchContacts } from '../../redux/operationsContacts';
+import { fetchContacts } from '../../redux/contacts/operationsContacts';
 
 
 export function ContactList({contacts}) {
