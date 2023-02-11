@@ -1,17 +1,40 @@
+import { useState } from "react";
+import { loginUser } from '../../services/auth-services';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { authThunk } from "redux/auth/thunk";
+import { useDispatch } from "react-redux";
 
+const LoginForm = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
-export const LoginForm = () => {
+    const handleChange = ({ target }) => {
+        const { name, value } = target;
+        if (name === 'email') setEmail(value);
+        else setPassword(value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(authThunk({email,password}))
+        loginUser({ email, password })
+            .then(Notify.success('Log In user succesfully'));
+    }
+
     return (
         <form   autoComplete="off">
-            <label >
+            <label name='email address' >
                 Email
-                <input type="email" name="email" />
+                <input handleChange={handleChange} value={email} type="email" name="email" />
             </label>
-            <label >
+            <label name='password'>
                 Password
-                <input type="password" name="password" />
+                <input handleChange={handleChange} value={password} type="password" name="password" />
             </label>
-        <button type="submit">Log In</button>
+        <button type="submit" onClick={handleSubmit}>Log In</button>
         </form>
     );
 }
+
+export default LoginForm
