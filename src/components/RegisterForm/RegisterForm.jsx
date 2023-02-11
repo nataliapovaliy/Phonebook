@@ -34,15 +34,15 @@ export const RegisterForm = () => {
         <form   autoComplete="off">
         <label >
             Username
-                <input handleChange={handleChange} value={userName} type="text" name="name" />
+                <input onChange={handleChange} value={userName} type="text" name="name" />
         </label>
         <label >
             Email
-            <input handleChange={handleChange} value={email} type="email" name="email" />
+            <input onChange={handleChange} value={email} type="email" name="email" />
         </label>
         <label >
             Password
-                <input handleChange={handleChange} value={password} type="password" name="password" />
+                <input onChange={handleChange} value={password} type="password" name="password" />
         </label>
         <button type="submit" onClick={handleSubmit}>Register</button>
         </form>
