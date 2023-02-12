@@ -4,8 +4,8 @@ import { Button, Flex, Box, Spacer, ButtonGroup, BreadcrumbLink, Breadcrumb } fr
 
 export const Navigation = () => {
     return (
-        <Box width="100%" height='80px' p='3' mb={4} borderBottom='2px' borderColor='gray.200' boxShadow='lg'>
-            <Flex  alignItems='center' gap='2'>
+        <Box width="100%" height='70px' p='3' mb={4} mt={2} borderBottom='2px' borderColor='gray.200' boxShadow='base'>
+            <Flex  alignItems='center'  gap='2'>
                 
                 <Breadcrumb fontWeight='medium' fontSize={20} >
                     <ButtonGroup gap='2' >

@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { authThunk } from "redux/auth/thunk";
+import { loginUser } from "../../services/auth-services/auth-services";
 import { useDispatch } from "react-redux";
 import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
@@ -16,7 +19,9 @@ const LoginForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(authThunk({email,password}))
+        dispatch(
+            loginUser({ email, password }))
+        navigate('/phonebook');
     }
 
     return (

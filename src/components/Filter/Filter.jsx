@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import css from '../Filter/Filter.module.css';
 import { selectFilter } from '../../redux/contacts/selectorContacts';
 import { filterSlice } from '../../redux/contacts/sliceFilter';
-import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
+import { Input, Stack, Box, Heading } from '@chakra-ui/react';
 
 export function Filter() {
     const filter = useSelector(selectFilter);

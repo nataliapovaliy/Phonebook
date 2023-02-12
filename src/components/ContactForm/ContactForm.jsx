@@ -35,7 +35,7 @@ const ContactForm = () => {
 
     return (
             
-        <Box width="400px" onSubmit={handleInput}>
+        <Box width="400px" onSubmit={() => handleInput()}>
             <Heading m={[3, 4]} fontSize={22}>Phonebook</Heading>
             <Stack spacing={3} ml={4} autoComplete="off">
 
