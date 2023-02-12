@@ -4,7 +4,7 @@ import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
 const RegisterPage = () => {
     return (
         <>
-        <h2>Form for registration</h2>
+        {/* <h2>Form for registration</h2> */}
         <RegisterForm />
         </>
         

@@ -14,7 +14,7 @@ export const Navigation = () => {
                     <Box p='2' fontSize={22} _hover={{color: "teal",}}>
                         <NavLink to='phonebook'>Phonebook</NavLink>  
                     </Box> */}
-                <ButtonGroup gap='2' fontSize={22} >
+                <ButtonGroup gap='2'  >
                     <Heading _hover={{color: "teal",}}><NavLink to='/'>Home</NavLink></Heading>
                     <Heading _hover={{color: "teal",}}><NavLink to='phonebook'>Phonebook</NavLink> </Heading>
                 </ButtonGroup>

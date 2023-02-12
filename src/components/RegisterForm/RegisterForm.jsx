@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { registerUser } from '../../services/auth-services/auth-services';
-import { Input, Stack, Button, Heading, Flex, Box, Spacer,ButtonGroup } from '@chakra-ui/react';
+import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
 
 export const RegisterForm = () => {
     const [userName, setUserName] = useState('');
@@ -32,14 +32,20 @@ export const RegisterForm = () => {
     }
 
     return (
-        <Stack spacing={3}  autoComplete="off">
+        <Box width="400px">
+            <Heading m={[3, 4]} fontSize={22}>Register on Phonebook</Heading>
+            <Stack spacing={3} ml={4} autoComplete="off">
 
-            <Input placeholder='Enter the username you want' onChange={handleChange} value={userName} type="text" name="name" />
-            <Input placeholder='Email' onChange={handleChange} value={email} type="email" name="email" />
-            <Input placeholder='Password' onChange={handleChange} value={password} type="password" name="password" />
+            <Input boxShadow='base' rounded='md' border='1px' borderColor='#C1C1C1' p='2' placeholder='Enter the username you want' onChange={handleChange} value={userName} type="text" name="name" />
+            <Input boxShadow='base' rounded='md' border='1px' borderColor='#C1C1C1' p='2' placeholder='Email' onChange={handleChange} value={email} type="email" name="email" />
+            <Input boxShadow='base' rounded='md' border='1px' borderColor='#C1C1C1' p='2' placeholder='Password' onChange={handleChange} value={password} type="password" name="password" />
+            </Stack>
 
-        {/* <button type="submit" onClick={handleSubmit}>Register</button> */}
-        </Stack>
+            <Button colorScheme='teal' variant='solid' m={[3, 4]} type="submit"
+                onClick={handleSubmit}>Register</Button >
+        
+        </Box>
+        // maxwidthsize='md' p='2' fontSize={18} color='white' bg='teal' boxShadow='lg' rounded='md'
     );
 }
 

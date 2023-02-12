@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
 import { lazy } from 'react';
-import { ChakraBaseProvider } from '@chakra-ui/react'
-
+// import { ChakraBaseProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
 const Phonebook = lazy(() => import("pages/Phonebook/Phonebook"));
@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <div>
-      <ChakraBaseProvider >
+      <ChakraProvider >
       <Routes>
         
           <Route path='/' element={<Layout />}>
@@ -27,7 +27,7 @@ const App = () => {
           </Route>
         
     </Routes>
-    </ChakraBaseProvider>
+    </ChakraProvider>
     </div>
   )
   
