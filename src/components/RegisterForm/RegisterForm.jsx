@@ -45,24 +45,5 @@ export const RegisterForm = () => {
                 onClick={handleSubmit}>Register</Button >
         
         </Box>
-        // maxwidthsize='md' p='2' fontSize={18} color='white' bg='teal' boxShadow='lg' rounded='md'
     );
 }
-
-//  return (
-        //  <form   autoComplete="off">
-        // <label >
-        //     Username
-        //         <input onChange={handleChange} value={userName} type="text" name="name" />
-        // </label>
-//         <label >
-//             Email
-//             <input onChange={handleChange} value={email} type="email" name="email" />
-//         </label>
-//         <label >
-//             Password
-//                 <input onChange={handleChange} value={password} type="password" name="password" />
-//         </label>
-//         <button type="submit" onClick={handleSubmit}>Register</button>
-//         </form>
-//     );

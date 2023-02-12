@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import { loginUser } from '../../services/auth-services';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { authThunk } from "redux/auth/thunk";
 import { useDispatch } from "react-redux";
 import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
