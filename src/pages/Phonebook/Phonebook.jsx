@@ -18,11 +18,11 @@ const Phonebook = () => {
     }
         return (
             <div className={css.phonebook}>
-                <h1 className={css.title}>Phonebook</h1>
+                {/* <h1 className={css.title}>Phonebook</h1> */}
 
                 <ContactForm />
 
-                <h2 className={css.title}>Contacts</h2>
+                {/* <h2 className={css.title}>Contacts</h2> */}
 
                 <Filter />
 
@@ -30,7 +30,7 @@ const Phonebook = () => {
                 {error && <p>{error}</p>}
 
                 <ContactList contacts={checkContact()}/>
-                
+
             </div>
     )
 }
