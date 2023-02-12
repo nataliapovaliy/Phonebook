@@ -7,9 +7,9 @@ const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;  //add JWT
 } 
 
-// const clearAuthHeader = () => {
-//     axios.defaults.headers.common.Authorization = '';  // remove JWT
-// }
+const clearAuthHeader = () => {
+    axios.defaults.headers.common.Authorization = '';  // remove JWT
+}
 
 export const registerUser = createAsyncThunk( 
     'auth/register',
@@ -40,6 +40,16 @@ export const loginUser = createAsyncThunk(
     }
 )
 
+export const logOutUser = createAsyncThunk(
+    'auth/logout',
+    async (_, thunkAPI) => {
+        try {
+            await axios.post('/users/logout');
+            clearAuthHeader();
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+            }
+});
 
 // const axiosInstance = axios.create({
 //     baseURL: 'https://connections-api.herokuapp.com',

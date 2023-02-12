@@ -26,6 +26,11 @@ export const Navigation = () => {
                         <BreadcrumbLink as={Link} to='login'>
                             <Button colorScheme='teal' type="submit">
                                 LogIn</Button></BreadcrumbLink>
+                        
+                        <BreadcrumbLink as={Link} to='usermenu'>
+                            <Button colorScheme='teal' variant='outline' type="submit">
+                                Profile</Button></BreadcrumbLink>
+                        
                     </ButtonGroup>
                 </Breadcrumb>
                 
