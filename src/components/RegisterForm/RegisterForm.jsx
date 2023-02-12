@@ -22,11 +22,8 @@ export const RegisterForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log({
-            name: userName,
-            email,
-            password,
-        });
+
+        
         dispatch(
             registerUser({
             name: userName,
@@ -34,26 +31,35 @@ export const RegisterForm = () => {
             password,
             })
         )
+        console.log('form >>>', {
+            name: userName,
+            email,
+            password,
+            });
         // Notify.success('Create user succesfully');
         navigate('/login');
     }
 
     return (
-        <Box width="400px">
+        <Box width="400px" >
             <Heading m={[3, 4]} fontSize={22}>Register on Phonebook</Heading>
-            <Stack spacing={3} ml={4} autoComplete="off">
+            {/* <form  autoComplete="off"> */}
+            <Stack spacing={3} ml={4} >
 
                 <Input boxShadow='base' rounded='md' border='1px' borderColor='#C1C1C1' p='2' placeholder='Enter username'
-                    onChange={handleChange} value={userName} type="text" name="userName" />
+                    onChange={handleChange} value={userName} 
+                    type="text" name="userName" />
                 <Input boxShadow='base' rounded='md' border='1px' borderColor='#C1C1C1' p='2' placeholder='Email'
-                    onChange={handleChange} value={email} type="email" name="email" />
+                    onChange={handleChange} value={email} 
+                    type="email" name="email" />
                 <Input boxShadow='base' rounded='md' border='1px' borderColor='#C1C1C1' p='2' placeholder='Password'
-                    onChange={handleChange} value={password} type="password" name="password" />
+                    onChange={handleChange} value={password} 
+                    type="password" name="password" />
             </Stack>
 
-            <Button colorScheme='teal' variant='solid' m={[3, 4]} type="submit"
-                onClick={handleSubmit}>Register</Button >
-        
+            <Button onClick={handleSubmit} colorScheme='teal' variant='solid' m={[3, 4]} type="submit">
+                Register</Button >
+            {/* </form> */}
         </Box>
     );
 }

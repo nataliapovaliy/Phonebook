@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from '../auth/initialState';
-import { authThunk } from "./thunk";
+import { registerUser, loginUser, logOutUser } from '../../services/auth-services/auth-services';
+
+const initialState = {
+    user: { name: null, email: null },
+    token: null,
+    isLoggedIn: false,
+    isLoading: false,
+}
 
 const handlePending = (state) => {
     state.isLoading = true;
@@ -10,12 +16,20 @@ const handlePending = (state) => {
 const handleFullfilled = (state, { payload }) => {
     state.isLoading = false;
     state.error = '';
-    state.access_token = payload.access_token;
+    state.token = payload.token;
+    state.isLoggedIn = true;
+    state.user = payload.user;
 }
 
 const handleError = (state, { payload }) => {
     state.isLoading = false;
-    state.error = payload.response.data.message;
+    state.error = payload;
+}
+
+const handleFullfilledLogOut = (state) => {
+    state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
 }
 
 const authSlice = createSlice({
@@ -26,9 +40,15 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(authThunk.pending, handlePending)
-            .addCase(authThunk.fulfilled, handleFullfilled)
-            .addCase(authThunk.rejected, handleError)
+            .addCase(registerUser.pending, handlePending)
+            .addCase(registerUser.fulfilled, handleFullfilled)
+            .addCase(registerUser.rejected, handleError)
+        
+            .addCase(loginUser.pending, handlePending)
+            .addCase(loginUser.fulfilled, handleFullfilled)
+            .addCase(loginUser.rejected, handleError)
+        
+            .addCase(logOutUser.fulfilled, handleFullfilledLogOut)
     },
 })
 
