@@ -7,9 +7,9 @@ export function Contact({ name, number, id }) {
     const dispatch = useDispatch();
 
     return (
-        <Box width="400px">
+        <Box width="400px" m={[3, 4]}>
             <Stack spacing={4} direction='row' align='center'>
-                <Text fontSize={16} textDecoration='none'> {name}: {number} </Text>
+                <Text fontSize={16} > {name}: {number} </Text>
             <Button colorScheme='teal' variant='outline' size='xs' m={[3, 4]} type="submit"
                 onClick={() => dispatch(delContact(id))}>Delete</Button >
             </Stack>

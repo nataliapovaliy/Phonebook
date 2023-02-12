@@ -16,22 +16,14 @@ const Phonebook = () => {
         const checkFilter = filter?.toLowerCase();
         return contacts.filter(contact => contact.name.toLowerCase().includes(checkFilter));
     }
-        return (
-            <div className={css.phonebook}>
-                {/* <h1 className={css.title}>Phonebook</h1> */}
-
+    return (
+            <>
                 <ContactForm />
-
-                {/* <h2 className={css.title}>Contacts</h2> */}
-
                 <Filter />
-
                 {isLoading && <p>Loading contacts...</p>}
                 {error && <p>{error}</p>}
-
                 <ContactList contacts={checkContact()}/>
-
-            </div>
+            </>
     )
 }
 
