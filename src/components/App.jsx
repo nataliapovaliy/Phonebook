@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
 import { lazy } from 'react';
-// import { ChakraBaseProvider } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
 
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
@@ -30,7 +29,6 @@ const App = () => {
     </ChakraProvider>
     </div>
   )
-  
 }
 
 export default App
