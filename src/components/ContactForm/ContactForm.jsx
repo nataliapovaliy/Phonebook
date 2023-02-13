@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operationsContacts';
 import { selectItems } from '../../redux/contacts/selectorContacts';
 import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
+import { Notify } from "notiflix";
 
 const ContactForm = () => {
+
     const dispatch = useDispatch();
     const contacts  = useSelector (selectItems);
     const [name, setName] = useState('');
@@ -14,14 +16,14 @@ const ContactForm = () => {
         const { name, value } = event.target;
         if (name === 'name') setName(value);
         else setNumber(value);
-        console.log('handleChange', event.target.value);
+        // console.log('handleChange', event.target.value);
     }
 
     const handleInput = (event) => {
         console.log('event', event.target[0].value);
         event.preventDefault();
         const dublicate = contacts.find(contact => contact.name.toLowerCase() === event.target[0].value.toLowerCase());
-        if (dublicate) { return alert(`${event.name} is already in contacts`); }
+        if (dublicate) { return Notify.failure(`${event.name} is already in contacts`); }
 
         dispatch(addContact({
             name,

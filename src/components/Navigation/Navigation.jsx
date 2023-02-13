@@ -38,19 +38,14 @@ export const Navigation = () => {
                                 LogIn</Button></BreadcrumbLink>
                         )}
                         
-                        
                         { isLoggedIn === true && (
                             <BreadcrumbLink as={Link} to='usermenu'>
                             <Button colorScheme='teal' variant='outline' type="submit">
                                 Profile</Button></BreadcrumbLink>
                         )}
                         
-                        
                     </ButtonGroup>
                 </Breadcrumb>
-                
-                {/* <li><NavLink className={css.link} to='usermenu'>Profile</NavLink></li> */}
-            
             </Flex>
         </Box>
     )
