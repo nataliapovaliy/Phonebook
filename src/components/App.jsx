@@ -1,9 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
+import { refreshUser } from 'services/auth-services/auth-services';
 
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
 const Phonebook = lazy(() => import("pages/Phonebook/Phonebook"));
@@ -14,7 +17,14 @@ const UserPage = lazy(() => import("pages/UserPage/UserPage"));
 
 const App = () => {
 
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? ( <p>Refreshing user...</p>) :(
     <div>
       <ChakraProvider >
       <Routes>

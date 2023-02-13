@@ -26,23 +26,23 @@ export const Navigation = () => {
                 <Breadcrumb>
                     <ButtonGroup gap='2' variant='solid' fontSize={18} color='white'>
                         
-                        { isLoggedIn === false && (
+                        
+                        {isLoggedIn === false ? (
+                            <>
                             <BreadcrumbLink as={Link} to='register'>
-                            <Button colorScheme='teal' type="submit" >
-                                Registred</Button></BreadcrumbLink>
-                        )}
-                        
-                        { isLoggedIn === false && (
+                                <Button colorScheme='teal' type="submit" >
+                                    Registred</Button></BreadcrumbLink>
+                                
                             <BreadcrumbLink as={Link} to='login'>
-                            <Button colorScheme='teal' type="submit">
-                                LogIn</Button></BreadcrumbLink>
-                        )}
-                        
-                        { isLoggedIn === true && (
+                                <Button colorScheme='teal' type="submit">
+                                    LogIn</Button></BreadcrumbLink>
+                            </>
+                        ) : (
                             <BreadcrumbLink as={Link} to='usermenu'>
-                            <Button colorScheme='teal' variant='outline' type="submit">
-                                Profile</Button></BreadcrumbLink>
-                        )}
+                                <Button colorScheme='teal' variant='outline' type="submit">
+                                    Profile</Button></BreadcrumbLink>
+                            )
+                        }
                         
                     </ButtonGroup>
                 </Breadcrumb>
