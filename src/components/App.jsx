@@ -18,7 +18,7 @@ const UserPage = lazy(() => import("pages/UserPage/UserPage"));
 const App = () => {
 
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoggedIn } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -44,7 +44,11 @@ const App = () => {
             <Route path='/usermenu' element={
               <PrivateRoute redirectTo='/login' component={<UserPage />} />} />
             
-            <Route path='*' element={<HomePage />} />
+            {isLoggedIn ? (<Route path='*' element={<Phonebook />} />) : (
+              <Route path='*' element={<LoginPage />} />
+            )
+            }
+            
           </Route>
         
     </Routes>
