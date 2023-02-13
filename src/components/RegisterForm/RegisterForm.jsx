@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { registerUser } from '../../services/auth-services/auth-services';
+import { registerUser } from '../../redux/auth/auth-services';
 import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
 import { useDispatch } from "react-redux";
 

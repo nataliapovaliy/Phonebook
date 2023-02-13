@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { loginUser } from "../../services/auth-services/auth-services";
+import { loginUser } from "../../redux/auth/auth-services";
 import { useDispatch } from "react-redux";
 import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";

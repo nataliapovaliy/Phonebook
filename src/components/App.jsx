@@ -6,7 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
-import { refreshUser } from 'services/auth-services/auth-services';
+import { refreshUser } from 'redux/auth/auth-services';
 
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
 const Phonebook = lazy(() => import("pages/Phonebook/Phonebook"));
