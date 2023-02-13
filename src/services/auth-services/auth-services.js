@@ -10,11 +10,9 @@ export const registerUser = createAsyncThunk(
             console.log('token >>>>', response.data.token);
             return response.data;
         } catch (error) {
-            
             return thunkAPI.rejectWithValue(error.response.data.message);
         }
     }
-    
 )
 
 export const loginUser = createAsyncThunk(
@@ -41,9 +39,3 @@ export const logOutUser = createAsyncThunk(
             return thunkAPI.rejectWithValue(error.message);
             }
 });
-
-
-// export const getProfile = async () => {
-//     const { data } = await axiosInstance('/users/current')
-//     return data
-// }
