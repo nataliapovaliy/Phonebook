@@ -21,7 +21,8 @@ const LoginForm = () => {
         event.preventDefault();
         dispatch(
             loginUser({ email, password }))
-        navigate('/phonebook');
+            .unwrap()
+        .then( () => navigate('/phonebook'))
     }
 
     return (

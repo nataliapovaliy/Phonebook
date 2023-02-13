@@ -14,6 +14,7 @@ const ContactForm = () => {
         const { name, value } = event.target;
         if (name === 'name') setName(value);
         else setNumber(value);
+        console.log('handleChange', event.target.value);
     }
 
     const handleInput = (event) => {
@@ -35,10 +36,11 @@ const ContactForm = () => {
 
     return (
             
-        <Box width="400px" onSubmit={() => handleInput()}>
+        <Box width="400px"  >
             <Heading m={[3, 4]} fontSize={22}>Phonebook</Heading>
-            <Stack spacing={3} ml={4} autoComplete="off">
-
+            <form onSubmit={handleInput} autoComplete="off">
+            <Stack spacing={3} ml={4} >
+        
                 <Input boxShadow='base' rounded='md' border='1px' borderColor='#C1C1C1' p='2'
                     placeholder='Enter Name'
                     onChange={handleChange} value={name} type="text" name="name"
@@ -56,8 +58,8 @@ const ContactForm = () => {
                 />
             </Stack>
 
-            <Button colorScheme='teal' variant='solid' m={[3, 4]} type="submit">Add Contacts</Button >
-        
+            <Button type="submit" colorScheme='teal' variant='solid' m={[3, 4]} >Add</Button >
+        </form>
         </Box>
         )
 }

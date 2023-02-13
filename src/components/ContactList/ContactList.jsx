@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Contact } from '../Contact/Contact';
 import css from '../ContactList/ContactList.module.css';
 import { fetchContacts } from '../../redux/contacts/operationsContacts';
+import { selectToken } from 'redux/auth/selectorAuth';
 
 
-export function ContactList({contacts}) {
+export function ContactList({ contacts }) {
+    const token = useSelector(selectToken);
     const dispatch = useDispatch();
 
-useEffect (() => {
+    useEffect(() => {
+    token &&
     dispatch(fetchContacts());
-}, [dispatch]);
+}, [dispatch, token]);
 
     return (
         <ul className={css.list}>
