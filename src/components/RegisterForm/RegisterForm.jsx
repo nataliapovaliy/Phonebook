@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { registerUser } from '../../redux/auth/auth-services';
 import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
@@ -11,9 +10,8 @@ export const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const errorAuth = useSelector(selectErrorAuth);
-
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
+
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
