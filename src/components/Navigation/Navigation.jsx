@@ -27,7 +27,7 @@ export const Navigation = () => {
                     <ButtonGroup gap='2' variant='solid' fontSize={18} color='white'>
                         
                         
-                        {isLoggedIn === false ? (
+                        {!isLoggedIn ? (
                             <>
                             <BreadcrumbLink as={Link} to='register'>
                                 <Button colorScheme='teal' type="submit" >

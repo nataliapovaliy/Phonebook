@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { registerUser } from '../../redux/auth/auth-services';
 import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
-import { useDispatch, useSelector } from "react-redux";
-import { selectErrorAuth } from "../../redux/auth/selectorAuth"
+import { useDispatch } from "react-redux";
+// import { selectErrorAuth } from "../../redux/auth/selectorAuth"
 
 export const RegisterForm = () => {
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const errorAuth = useSelector(selectErrorAuth);
+    // const errorAuth = useSelector(selectErrorAuth);
     const dispatch = useDispatch();
 
 
@@ -23,13 +23,16 @@ export const RegisterForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(
-            registerUser({
+                registerUser({
                 name: userName,
                 email,
                 password,
-            }),
-            errorAuth ? Notify.failure(`${errorAuth}`) : Notify.success('Create user succesfully')
-        )
+                })
+            ).unwrap()
+            .then(() => {
+                Notify.success('Create user succesfully');
+            }
+            ).catch(error => {Notify.failure(`${error}`)})
 
 
         // dispatch(
@@ -43,12 +46,16 @@ export const RegisterForm = () => {
         //     errorAuth ? Notify.failure(`${errorAuth}`) : Notify.success('Create user succesfully')
         //     })
         
-            // Працювало але зауваження
-            // .then(() => {
-            //     Notify.success('Create user succesfully');
-            //     navigate('/login');
-            // }
-            // ).catch(error => {Notify.failure(`${error}`)})
+        // dispatch(
+        //     registerUser({
+        //         name: userName,
+        //         email,
+        //         password,
+        //     }),
+        //     errorAuth ? Notify.failure(`${errorAuth}`) : Notify.success('Create user succesfully')
+        // )
+            
+            
     }
 
     return (

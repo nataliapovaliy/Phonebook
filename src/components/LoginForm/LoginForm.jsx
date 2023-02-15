@@ -2,14 +2,12 @@ import { useState } from "react";
 import { loginUser } from "../../redux/auth/auth-services";
 import { useDispatch } from "react-redux";
 import { Input, Stack, Button, Box, Heading } from '@chakra-ui/react';
-import { useNavigate } from "react-router-dom";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
@@ -19,10 +17,17 @@ const LoginForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // dispatch(
+        //     loginUser({ email, password }),
+        //     )
+
         dispatch(
-            loginUser({ email, password }))
-            .unwrap()
-        .then( () => navigate('/phonebook'))
+                loginUser({ email, password })
+            ).unwrap()
+            .then(() => {
+                Notify.success('Create user succesfully');
+            }
+            ).catch(error => {Notify.failure(`${error}`)})
     }
 
     return (

@@ -2,12 +2,12 @@ import axios from "axios";
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setAuthHeader, clearAuthHeader } from '../../api/api';
 
+
 // axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 // const setAuthHeader = token => {
 //     axios.defaults.headers.common.Authorization = `Bearer ${token}`;  //add JWT
 // } 
-
 // const clearAuthHeader = () => {
 //     axios.defaults.headers.common.Authorization = '';  // remove JWT
 // }
@@ -21,7 +21,6 @@ export const registerUser = createAsyncThunk(
             console.log('token >>>>', response.data.token);
             return response.data;
         } catch (error) {
-            
             return thunkAPI.rejectWithValue(error.response.data.message);
         }
     }

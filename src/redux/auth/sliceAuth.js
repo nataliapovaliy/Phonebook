@@ -11,23 +11,20 @@ const initialState = {
 
 const handlePending = (state) => {
     state.isLoading = true;
-    // state.error = '';
-    state.errorAuth = null;
+    // state.errorAuth = null;
 }
 
 const handleFullfilled = (state, { payload }) => {
     state.isLoading = false;
-    state.error = '';
     state.token = payload.token;
     state.isLoggedIn = true;
     // state.user = payload.user;
-    state.errorAuth = null;
+    // state.errorAuth = null;
 }
 
 const handleError = (state, { payload }) => {
     state.isLoading = false;
-    state.error = payload;
-    state.errorAuth = payload;
+    // state.errorAuth = payload;
 }
 
 const handleFullfilledLogOut = (state) => {
