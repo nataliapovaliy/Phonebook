@@ -6,7 +6,7 @@ const initialState = {
     token: null,
     isLoggedIn: false,
     isLoading: false,
-    errorAuth: null,
+    // errorAuth: null,
 }
 
 const handlePending = (state) => {
@@ -18,7 +18,7 @@ const handleFullfilled = (state, { payload }) => {
     state.isLoading = false;
     state.token = payload.token;
     state.isLoggedIn = true;
-    // state.user = payload.user;
+    state.user = payload.user;
     // state.errorAuth = null;
 }
 
